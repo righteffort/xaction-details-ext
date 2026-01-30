@@ -18,7 +18,7 @@ export default defineConfig({
       manifest: generateManifest,
       watchFilePaths: ["package.json", "manifest.json"],
       browser: process.env.TARGET || "chrome",
-      // additionalInputs: ["src/onboarding.html"],
+      additionalInputs: ["src/content/injected-actual.ts"],
     }),
   ],
 });

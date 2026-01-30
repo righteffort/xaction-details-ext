@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
 import browser from 'webextension-polyfill';
 
 type AppState = 'IDLE' | 'CHECKING_TABS' | 'READY_TO_SYNC' | 'SYNCING';
 
-export default function App() {
+function App() {
+  console.log('hello from sidepanel App');
   const [status, setStatus] = useState<AppState>('IDLE');
   const [tabs, setTabs] = useState({ actual: false, chase: false });
   const [logs, setLogs] = useState<string[]>([]);
 
+  // Check if required tabs are open
   const checkTabs = async () => {
-    const actualTabs = await browser.tabs.query({ url: "*://*.actualbudget.org/*" });
+    const actualTabs = await browser.tabs.query({ url: "*://actual.romerfamily.com/*" });
     const chaseTabs = await browser.tabs.query({ url: "*://*.chase.com/*" });
     
     const hasActual = actualTabs.length > 0;
@@ -21,6 +24,7 @@ export default function App() {
     return 'CHECKING_TABS';
   };
 
+  // Poll for tab status
   useEffect(() => {
     checkTabs().then(setStatus);
     // Poll every 2s to see if user opened tabs
@@ -28,15 +32,29 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
+  // Listen for logs from background
+  useEffect(() => {
+    const listener = (msg: any) => {
+      if (msg.action === 'STATE_UPDATED') {
+        setLogs(prev => [...prev, `✅ Received ${msg.count} transactions from Actual.`]);
+        setStatus('READY_TO_SYNC');
+      }
+    };
+    browser.runtime.onMessage.addListener(listener);
+    return () => browser.runtime.onMessage.removeListener(listener);
+  }, []);
+
   const handleSync = async () => {
     setStatus('SYNCING');
     setLogs(prev => [...prev, "Starting Sync..."]);
     
     // 1. Trigger Actual Bridge
-    const actualTabs = await browser.tabs.query({ url: "*://*.actualbudget.org/*" });
+    const actualTabs = await browser.tabs.query({ url: "*://actual.romerfamily.com/*" });
     if (actualTabs[0]?.id) {
        browser.tabs.sendMessage(actualTabs[0].id, { action: 'FETCH_ACTUAL_DATA' });
        setLogs(prev => [...prev, "Requested Actual Data..."]);
+    } else {
+      setLogs(prev => [...prev, "❌ Error: Actual tab lost."]);
     }
   };
 
@@ -66,17 +84,37 @@ export default function App() {
     );
   }
 
+  console.log('sidepanel App returning');
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Ready to Sync</h2>
-      <button onClick={handleSync} disabled={status === 'SYNCING'}>
-        {status === 'SYNCING' ? 'Syncing...' : 'Start Bridge'}
+    <div style={{ padding: 20, fontFamily: 'sans-serif' }}>
+      <h3>Bridge Ready</h3>
+      <p>Both sites detected.</p>
+
+      <button
+        onClick={handleSync}
+        disabled={status === 'SYNCING'}
+        style={{ padding: '10px 20px', cursor: 'pointer', background: '#007bff', color: 'white', border: 'none', borderRadius: 4 }}
+      >
+        {status === 'SYNCING' ? 'Running...' : 'Sync Now'}
       </button>
-      
-      <div style={{ marginTop: 20, background: '#f0f0f0', padding: 10, borderRadius: 4 }}>
-        <strong>Logs:</strong>
-        {logs.map((l, i) => <div key={i}>{l}</div>)}
+
+      <div style={{ marginTop: 20, background: '#f5f5f5', padding: 10, borderRadius: 4, fontSize: '0.9em', minHeight: 100 }}>
+        <strong>Activity Log:</strong>
+        {logs.map((l, i) => <div key={i} style={{ marginTop: 4 }}>{l}</div>)}
       </div>
     </div>
   );
+}
+
+// --- MOUNTING LOGIC (Missing Piece) ---
+const container = document.getElementById('root');
+if (container) {
+  const root = createRoot(container);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} else {
+  console.error("Root element not found");
 }

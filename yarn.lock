@@ -705,6 +705,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dom@npm:^19.2.3":
+  version: 19.2.3
+  resolution: "@types/react-dom@npm:19.2.3"
+  peerDependencies:
+    "@types/react": ^19.2.0
+  checksum: 10c0/b486ebe0f4e2fb35e2e108df1d8fc0927ca5d6002d5771e8a739de11239fe62d0e207c50886185253c99eb9dedfeeb956ea7429e5ba17f6693c7acb4c02f8cd1
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:^19.2.10":
   version: 19.2.10
   resolution: "@types/react@npm:19.2.10"
@@ -4073,6 +4082,7 @@ __metadata:
     "@types/chrome": "npm:^0.1.36"
     "@types/node": "npm:^25.1.0"
     "@types/react": "npm:^19.2.10"
+    "@types/react-dom": "npm:^19.2.3"
     "@types/webextension-polyfill": "npm:^0.12.4"
     eslint: "npm:^9.35.0"
     prettier: "npm:^3.8.1"

@@ -36,8 +36,8 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["src/content/injected-actual.ts"],
-      "matches": ["https://*.actualbudget.org/*", "http://localhost:5006/*"]
+      "resources": ["src/content/injected-actual.js"],
+      "matches": ["https://*.actualbudget.org/*", "http://localhost:5006/*", "https://actual.romerfamily.com/*", "https://TODO_DONT_HARDCODE_ACTUAL/*"]
     }
   ]
 }

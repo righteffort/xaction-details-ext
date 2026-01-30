@@ -1,8 +1,10 @@
 import browser from 'webextension-polyfill';
 
 // Inject the main world script
+const scriptUrl = browser.runtime.getURL('src/content/injected-actual.js');
+console.log(`injecting script from ${scriptUrl}`)
 const script = document.createElement('script');
-script.src = browser.runtime.getURL('assets/injected-actual.js');
+script.src = scriptUrl;
 script.onload = function() { (this as HTMLScriptElement).remove(); };
 (document.head || document.documentElement).appendChild(script);
 
