@@ -1,5 +1,5 @@
 {
-  "name": "xaction-details-ext",
+  "name": "@righteffort/xaction-details-ext",
   "version": "0.0.1",
   "description": "Browser extension that updates finance app transactions with details from merchants",
   "author": "Ted Romer <tromer@gmail.com>",
@@ -26,12 +26,11 @@
     "dev": "vite",
     "build": "yarn compile && vite build",
     "dist": "rm -f dist.zip && yarn build && cd dist && zip -r ../dist.zip *",
-    "fun": "tsc -p tsconfig-cli.json && node dist-cli/fun.js",
-    "clean": "rm -rf dist dist-cli",
-    "lint": "eslint {src,tests}/**/*.ts",
+    "clean": "rm -rf dist",
+    "lint": "eslint {src,test}/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
-    "prettier": "prettier {src,tests}/**/*.{js,ts} --check",
-    "prettier:fix": "prettier {src,tests}/**/*.{js,ts} --write",
+    "prettier": "prettier {src,test}/**/*.{js,ts} --check",
+    "prettier:fix": "prettier {src,test}/**/*.{js,ts} --write",
     "test": "yarn vitest"
   },
   "dependencies": {
