@@ -1,14 +1,8 @@
 import browser from "webextension-polyfill";
+import { ActualBridge } from "@righteffort/actual-ext-bridge";
 
-// Inject the main world script
-const scriptUrl = browser.runtime.getURL("src/content/injected-actual.js");
-console.log(`injecting script from ${scriptUrl}`);
-const script = document.createElement("script");
-script.src = scriptUrl;
-script.onload = function () {
-  (this as HTMLScriptElement).remove();
-};
-(document.head || document.documentElement).appendChild(script);
+const actualBridge = new ActualBridge();
+await actualBridge.connect();
 
 // Proxy messages: Background -> Isolated -> Main World
 // eslint-disable-next-line

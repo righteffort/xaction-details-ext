@@ -443,6 +443,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@righteffort/xaction-details-ext@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@righteffort/xaction-details-ext@workspace:."
+  dependencies:
+    "@eslint/js": "npm:^9.35.0"
+    "@types/chrome": "npm:^0.1.36"
+    "@types/node": "npm:^25.1.0"
+    "@types/react": "npm:^19.2.10"
+    "@types/react-dom": "npm:^19.2.3"
+    "@types/webextension-polyfill": "npm:^0.12.4"
+    eslint: "npm:^9.35.0"
+    prettier: "npm:^3.8.1"
+    react: "npm:^19.2.4"
+    react-dom: "npm:^19.2.4"
+    typescript: "npm:^5.9.3"
+    typescript-eslint: "npm:^8.43.0"
+    vite: "npm:^7.3.1"
+    vite-plugin-web-extension: "npm:^4.0.0"
+    vitest: "npm:^4.0.18"
+    webextension-polyfill: "npm:^0.12.0"
+  languageName: unknown
+  linkType: soft
+
 "@rollup/rollup-android-arm-eabi@npm:4.57.0":
   version: 4.57.0
   resolution: "@rollup/rollup-android-arm-eabi@npm:4.57.0"
@@ -4073,29 +4096,6 @@ __metadata:
   checksum: 10c0/3305839b9a0d6fb930cb63a52f34d3936013d8b0682ff3ec133c9826512620f213800ffa19ea22904876d5b7e9a3c1f40682f03597d986a4ca881fa7b033688c
   languageName: node
   linkType: hard
-
-"xaction-details-ext@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "xaction-details-ext@workspace:."
-  dependencies:
-    "@eslint/js": "npm:^9.35.0"
-    "@types/chrome": "npm:^0.1.36"
-    "@types/node": "npm:^25.1.0"
-    "@types/react": "npm:^19.2.10"
-    "@types/react-dom": "npm:^19.2.3"
-    "@types/webextension-polyfill": "npm:^0.12.4"
-    eslint: "npm:^9.35.0"
-    prettier: "npm:^3.8.1"
-    react: "npm:^19.2.4"
-    react-dom: "npm:^19.2.4"
-    typescript: "npm:^5.9.3"
-    typescript-eslint: "npm:^8.43.0"
-    vite: "npm:^7.3.1"
-    vite-plugin-web-extension: "npm:^4.0.0"
-    vitest: "npm:^4.0.18"
-    webextension-polyfill: "npm:^0.12.0"
-  languageName: unknown
-  linkType: soft
 
 "xdg-basedir@npm:^5.1.0":
   version: 5.1.0

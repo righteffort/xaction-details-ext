@@ -35,7 +35,8 @@
   },
   "dependencies": {
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "@righteffort/actual-ext-bridge": "^0.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
