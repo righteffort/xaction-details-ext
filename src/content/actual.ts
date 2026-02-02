@@ -20,7 +20,7 @@ browser.runtime.onMessage.addListener((msg: any) => {
   if (msg.action === "FETCH_ACTUAL_DATA") {
     window.postMessage(
       { type: "ACTUAL_BRIDGE_CMD", command: "GET_TRANSACTIONS" },
-      "*",
+      "/",
     );
   }
 
@@ -31,7 +31,7 @@ browser.runtime.onMessage.addListener((msg: any) => {
         command: "SAVE_TRANSACTION",
         payload: msg.data,
       },
-      "*",
+      "/",
     );
     return;
   }
@@ -42,14 +42,14 @@ browser.runtime.onMessage.addListener((msg: any) => {
         command: "IMPORT_TRANSACTION",
         payload: msg.data,
       },
-      "*",
+      "/",
     );
   }
 });
 
 // Proxy messages: Main World -> Isolated -> Background
 window.addEventListener("message", (event) => {
-  if (event.data.type === "ACTUAL_BRIDGE_DATA") {
+  if (event.data.type === "ACTUAL_BRIDGE_DATA" && event.origin === window.origin) {
     browser.runtime.sendMessage({
       action: "ACTUAL_DATA_RECEIVED",
       data: event.data.payload,

@@ -14,7 +14,7 @@ browser.runtime.onMessage.addListener((msg: any) => {
   if (msg.action === "FETCH_ACTUAL_DATA") {
     window.postMessage(
       { type: "ACTUAL_BRIDGE_CMD", command: "GET_TRANSACTIONS" },
-      "*",
+      "/",
     );
   }
 });

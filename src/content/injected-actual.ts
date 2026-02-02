@@ -83,14 +83,14 @@ setInterval(() => {
   if (currentSignature !== lastStateSignature) {
     console.log(`Bridge: View Changed (${txs.length} items). Syncing...`);
     lastStateSignature = currentSignature;
-    window.postMessage({ type: "ACTUAL_BRIDGE_DATA", payload: txs }, "*");
+    window.postMessage({ type: "ACTUAL_BRIDGE_DATA", payload: txs }, "/");
   }
 }, 2000);
 
 // Listen for commands from the isolated content script
 window.addEventListener("message", async (event) => {
+  if (event.origin !== window.origin) return;
   if (event.data.type !== "ACTUAL_BRIDGE_CMD") return;
-  console.log("actual event data", JSON.stringify(event.data, null, 2));
   const { command, payload } = event.data;
   const props = connectToActual();
 
@@ -103,7 +103,7 @@ window.addEventListener("message", async (event) => {
     // Send data back to isolated world
     window.postMessage(
       { type: "ACTUAL_BRIDGE_DATA", payload: props.transactions },
-      "*",
+      "/",
     );
     return;
   }
