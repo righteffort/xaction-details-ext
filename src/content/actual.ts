@@ -1,7 +1,7 @@
 import browser from "webextension-polyfill";
-import { ActualBridge } from "@righteffort/actual-ext-bridge";
+import { LocalBridge } from "@righteffort/actual-ext-bridge";
 
-const actualBridge = new ActualBridge();
+const actualBridge = new LocalBridge();
 await actualBridge.connect();
 
 // Proxy messages: Background -> Isolated -> Main World

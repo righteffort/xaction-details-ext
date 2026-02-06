@@ -443,11 +443,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@righteffort/actual-ext-bridge@portal:/home/ted/src/actual-ext-bridge::locator=%40righteffort%2Fxaction-details-ext%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@righteffort/actual-ext-bridge@portal:/home/ted/src/actual-ext-bridge::locator=%40righteffort%2Fxaction-details-ext%40workspace%3A."
+  dependencies:
+    birpc: "npm:^4.0.0"
+  languageName: node
+  linkType: soft
+
 "@righteffort/xaction-details-ext@workspace:.":
   version: 0.0.0-use.local
   resolution: "@righteffort/xaction-details-ext@workspace:."
   dependencies:
     "@eslint/js": "npm:^9.35.0"
+    "@righteffort/actual-ext-bridge": "npm:^0.0.1"
     "@types/chrome": "npm:^0.1.36"
     "@types/node": "npm:^25.1.0"
     "@types/react": "npm:^19.2.10"
@@ -1133,6 +1142,13 @@ __metadata:
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
   checksum: 10c0/9308baf0a7e4838a82bbfd11e01b1cb0f0cf2893bc1676c27c2a8c0e70cbae1c59120c3268517a8ae7fb6376b4639ef81ca22582611dbee4ed28df945134aaee
+  languageName: node
+  linkType: hard
+
+"birpc@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "birpc@npm:4.0.0"
+  checksum: 10c0/61f4e893ff4c5948b2c587c971c04883af0d8b2658d4632c8e77073db9f9e8b040402f985d56308021890b2ad32ef8392e36a8335cab1e3771d99e1b025d1af6
   languageName: node
   linkType: hard
 

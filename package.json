@@ -34,9 +34,9 @@
     "test": "yarn vitest"
   },
   "dependencies": {
+    "@righteffort/actual-ext-bridge": "^0.0.1",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "@righteffort/actual-ext-bridge": "^0.0.1"
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
@@ -53,5 +53,8 @@
     "vite-plugin-web-extension": "^4.0.0",
     "vitest": "^4.0.18",
     "webextension-polyfill": "^0.12.0"
+  },
+  "resolutions": {
+    "@righteffort/actual-ext-bridge": "portal:/home/ted/src/actual-ext-bridge"
   }
 }
