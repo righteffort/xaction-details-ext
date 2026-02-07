@@ -3,9 +3,7 @@ let lastStateSignature = "";
 
 // Find React props (vibe coded with Gemini)
 function connectToActual() {
-  const anchor =
-    document.querySelector('div[data-testid="row"], .recs-table-row') ||
-    document.querySelector('div[role="columnheader"], .recs-table-header-cell');
+  const anchor = document.querySelector('div[data-testid="transaction-table"]');
 
   if (!anchor) return null;
 

@@ -71,7 +71,7 @@ function runPocLogic(transactions: any[], tabId: number) {
     if (!tx.notes) return;
 
     // 1. Simple Note Update
-    if (tx.notes.includes("extension test updateme")) {
+    if (tx.notes.includes("extension test update me")) {
       console.log(`POC: Updating notes for ${tx.id}`);
 
       const updatedTx = {
