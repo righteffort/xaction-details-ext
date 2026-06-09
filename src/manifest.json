@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Xaction Details",
+  "description": "Xaction Details Extension",
+  "{{chrome}}.manifest_version": 3,
+  "{{firefox}}.manifest_version": 2,
+  "permissions": ["sidePanel", "storage", "scripting", "tabs"],
+  "host_permissions": [
+    "https://*.amazon.com/*",
+    "https://*.chase.com/*"
+  ],
+  "optional_host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "src/background/main.ts",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "src/sidepanel/index.html"
+  },
+  "action": {
+    "default_title": "Open Sync Tool"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.actualbudget.org/*", "http://localhost:5006/*", "https://actual.romerfamily.com/*", "https://TODO_DONT_HARDCODE_ACTUAL/*"],
+      "js": ["src/content/actual.ts"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://*.chase.com/*"],
+      "js": ["src/content/chase.ts"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["src/content/injected-actual.js"],
+      "matches": ["https://*.actualbudget.org/*", "http://localhost:5006/*", "https://actual.romerfamily.com/*", "https://TODO_DONT_HARDCODE_ACTUAL/*"]
+    }
+  ]
+}
