@@ -1,3 +1,6 @@
+## Eventual organization
+Public monorepo at righteffort/xaction-details including libraries, extension(s), etc. BTW: deprecate thromer/xaction-details.
+
 ## Future Amazon scraping: highlights from https://github.com/philipmulcahy/azad
 * order detail parser is `extractDetailPromise` https://github.com/philipmulcahy/azad/blob/master/src/js/order_details.ts#L38
 * order discovery starts in `reallyScrapeAndPublish` https://github.com/philipmulcahy/azad/blob/master/src/js/transaction.ts#L40
